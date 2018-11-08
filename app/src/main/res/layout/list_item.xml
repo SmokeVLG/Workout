@@ -2,12 +2,12 @@
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/cardView"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginLeft="16dp"
     android:layout_marginTop="8dp"
-    android:layout_marginRight="16dp">
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    android:layout_height="wrap_content">
 
-    <RelativeLayout
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -25,16 +25,16 @@
             android:id="@+id/list_item_image_view"
             android:layout_width="95dp"
             android:layout_height="95dp"
-            android:layout_margin="4dp"
-            android:background="@color/colorGray" />
+            android:layout_margin="4dp" />
 
         <TextView
             android:id="@+id/list_item_title_text_view"
-            style="@style/WrapContentMW"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:layout_marginRight="4dp"
-            android:layout_toLeftOf="@id/list_item_more"
-            android:layout_toRightOf="@id/list_item_image_view"
+            android:layout_toLeftOf="@+id/list_item_more"
+            android:layout_toRightOf="@+id/list_item_image_view"
             android:ellipsize="end"
             android:maxLines="2"
             android:text="@string/title_mock_text"
@@ -43,9 +43,10 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/list_item_deskription_text_view"
-            style="@style/WrapContentMW"
-            android:layout_below="@id/list_item_title_text_view"
+            android:id="@+id/list_item_description_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/list_item_title_text_view"
             android:layout_marginTop="4dp"
             android:layout_toRightOf="@id/list_item_image_view"
             android:ellipsize="end"
@@ -56,19 +57,21 @@
             android:id="@+id/list_item_horizontal_separator"
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            android:layout_below="@id/list_item_image_view"
+            android:layout_below="@+id/list_item_image_view"
             android:layout_marginLeft="8dp"
-            android:layout_marginTop="6dp"
+            android:layout_marginTop="16dp"
             android:layout_marginRight="8dp"
             android:background="@color/colorAccent" />
 
         <LinearLayout
-            style="@style/WrapContentMW"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_below="@id/list_item_horizontal_separator"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="4dp"
             android:orientation="horizontal">
 
-            <LinearLayout style="@style/RecordLinerLayout">
+            <LinearLayout style="@style/RecordLinearLayout">
 
                 <ImageView
                     style="@style/WrapContentHW"
@@ -77,11 +80,11 @@
                 <TextView
                     android:id="@+id/list_item_record_weight"
                     style="@style/WrapContentHW"
-                    android:text="30KG" />
+                    android:text="30kg" />
 
             </LinearLayout>
 
-            <LinearLayout style="@style/RecordLinerLayout">
+            <LinearLayout style="@style/RecordLinearLayout">
 
                 <ImageView
                     style="@style/WrapContentHW"
@@ -90,11 +93,11 @@
                 <TextView
                     android:id="@+id/list_item_record_reps_count"
                     style="@style/WrapContentHW"
-                    android:text="25 rep" />
+                    android:text="25 times" />
 
             </LinearLayout>
 
-            <LinearLayout style="@style/RecordLinerLayout">
+            <LinearLayout style="@style/RecordLinearLayout">
 
                 <ImageView
                     style="@style/WrapContentHW"
@@ -104,10 +107,9 @@
                     android:id="@+id/list_item_record_date"
                     style="@style/WrapContentHW"
                     android:text="12.12.2012" />
-
             </LinearLayout>
 
         </LinearLayout>
-
     </RelativeLayout>
+
 </android.support.v7.widget.CardView>

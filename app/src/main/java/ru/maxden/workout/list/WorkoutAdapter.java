@@ -11,6 +11,7 @@ import java.util.List;
 import ru.maxden.workout.Model.Workout;
 import ru.maxden.workout.Model.WorkoutList;
 import ru.maxden.workout.R;
+import ru.maxden.workout.interfaces.OnListItemClickListener;
 
 
 /**
@@ -18,26 +19,35 @@ import ru.maxden.workout.R;
  */
 
 public class WorkoutAdapter extends RecyclerView.Adapter<WorkoutViewHolder> {
-	private List<Workout> workoutList = WorkoutList.getInstance().getWorkouts();
+    private List<Workout> workoutList = WorkoutList.getInstance().getWorkouts();
+    private OnListItemClickListener itemClickListener;
 
-	@NonNull
-	@Override
-	public WorkoutViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-		View itemView = LayoutInflater.from(viewGroup.getContext()).inflate(
-				R.layout.list_item,
-				viewGroup,
-				false
-		);
-		return new WorkoutViewHolder(itemView);
-	}
+    public WorkoutAdapter(OnListItemClickListener itemClickListener) {
+        this.itemClickListener = itemClickListener;
+    }
 
-	@Override
-	public void onBindViewHolder(@NonNull WorkoutViewHolder workoutViewHOlder, int index) {
-		workoutViewHOlder.bindView(workoutList.get(index), index);
-	}
+    @NonNull
+    @Override
+    public WorkoutViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+        View itemView = LayoutInflater.from(viewGroup.getContext()).inflate(
+                R.layout.list_item,
+                viewGroup,
+                false
+        );
+        return new WorkoutViewHolder(itemView);
+    }
 
-	@Override
-	public int getItemCount() {
-		return workoutList != null ? workoutList.size() : 0;
-	}
+    @Override
+    public void onBindViewHolder(@NonNull WorkoutViewHolder workoutViewHolder, int index) {
+        workoutViewHolder.bindView(workoutList.get(index), index, itemClickListener);
+    }
+
+    @Override
+    public int getItemCount() {
+        return workoutList != null ? workoutList.size() : 0;
+    }
+
+    public void addWorkout(Workout workout) {
+        this.workoutList.add(workout);
+    }
 }
